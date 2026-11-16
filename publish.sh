@@ -10,7 +10,7 @@ ME=$(curl -s "${H[@]}" $API/user | python3 -c 'import sys,json;print(json.load(s
 BODY='{"name":"'$NAME'","description":"The Work Loop Canvas: a free Claude skill, book and lecture for getting AI into the core of a firm","homepage":"https://businessengineer.ai","has_issues":true}'
 if [ "$ME" = "$GH_OWNER" ]; then URL=$API/user/repos; else URL=$API/orgs/$GH_OWNER/repos; fi
 curl -s -o /dev/null -w "create repo: %{http_code}\n" "${H[@]}" -X POST "$URL" -d "$BODY"
-git init -q 2>/dev/null || true; git add -A; git -c user.name="Gennaro Cuofano" -c user.email="admin@fourweekmba.com" commit -q -m "The Work Loop Canvas: skill, README, licences" || true
+git init -q 2>/dev/null || true; git add -A; git -c user.name="Gennaro Cuofano" -c user.email="admin@fourweekmba.com" commit -q -m "The Work Loop Canvas: skill, README, licences" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" || true
 git branch -M main
 git push -q "https://x-access-token:$GITHUB_TOKEN@github.com/$GH_OWNER/$NAME.git" main
 REL=$(curl -s "${H[@]}" -X POST $API/repos/$GH_OWNER/$NAME/releases -d '{"tag_name":"v1.0","name":"The Work Loop Canvas v1.0","body":"The book (PDF) and the full lecture (MP4). The Claude skill is in skills/."}')

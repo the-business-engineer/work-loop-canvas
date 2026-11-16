@@ -18,7 +18,7 @@ By **Gennaro Cuofano**, [The Business Engineer](https://businessengineer.ai) and
 
 **Claude Code**
 ```bash
-git clone https://github.com/OWNER/work-loop-canvas.git
+git clone https://github.com/the-business-engineer/work-loop-canvas.git
 mkdir -p ~/.claude/skills
 cp -r work-loop-canvas/skills/the-work-loop-canvas ~/.claude/skills/
 ```
